@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDPNZ – Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif;}
+body { background:#111; color:#f0f0f0; text-align:center; overflow-x:hidden; }
+canvas { position:fixed; top:0; left:0; z-index:1; }
+
+.container { max-width:900px; margin:auto; padding:20px; position:relative; z-index:2; }
+
+h1 {
+  font-size:3rem; margin:10px 0; 
+  color:#ff3b3b;
+  text-shadow: 0 0 15px #ff3b3b, 0 0 30px #ff3b3b, 0 0 45px #ff3b3b;
+}
+
+p.tagline { font-size:1.2rem; margin-bottom:40px; color:#ccc; animation: slideUp 2s ease forwards; opacity:0; }
+@keyframes slideUp { to { opacity:1; transform:translateY(0); } from { transform:translateY(20px); opacity:0; } }
+
+ul.features {
+  list-style:none; margin-bottom:40px; animation: fadeIn 2s ease forwards; opacity:0;
+}
+@keyframes fadeIn { to { opacity:1; } }
+
+ul.features li {
+  margin:15px 0; font-size:1.1rem; position:relative; padding-left:30px;
+  transition: all 0.3s ease;
+  animation: featureEntry 1s ease forwards;
+  opacity:0;
+}
+@keyframes featureEntry { to { opacity:1; transform:translateX(0);} from { opacity:0; transform:translateX(-30px);} }
+ul.features li::before { content:"✔"; position:absolute; left:0; color:#ff3b3b; }
+ul.features li:hover { color:#ff6666; transform:translateX(10px); }
+
+.subscribe { margin-bottom:40px; }
+.subscribe input[type="email"] { padding:12px; width:60%; max-width:300px; border:none; border-radius:5px 0 0 5px; outline:none; }
+.subscribe button {
+  padding:12px 20px; border:none; background-color:#ff3b3b; color:#fff; border-radius:0 5px 5px 0; cursor:pointer; font-weight:bold;
+  animation: pulse 2s infinite;
+  transition: transform 0.2s;
+}
+.subscribe button:hover { background-color:#e22c2c; transform:scale(1.05); }
+@keyframes pulse { 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.05);} }
+
+.subscribe-message { margin-top:15px; color:#ff3b3b; font-weight:bold; display:none; animation: fadeIn 1s ease forwards; }
+
+.socials a {
+  color:#f0f0f0; margin:0 10px; text-decoration:none; font-weight:bold; transition: color 0.3s, transform 0.3s;
+}
+.socials a:hover { color:#ff3b3b; transform:scale(1.2); }
+
+footer { margin-top:50px; font-size:0.9rem; color:#888; animation: fadeIn 2s ease forwards; opacity:0; }
+
+@media (max-width:500px){
+  h1{font-size:2.2rem;}
+  .subscribe input[type="email"], .subscribe button{width:100%; margin:5px 0;}
+}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="container">
+  <h1>EDPNZ</h1>
+  <p class="tagline">Exposing Predators. Protecting Communities.</p>
+
+  <ul class="features">
+    <li>Uncensored Updates & Alerts</li>
+    <li>Verified Call & Chat Logs</li>
+    <li>Investigative Videos & Safety Tips</li>
+    <li>Community Alerts & Reports</li>
+    <li>Subscription Service: $4.45/month</li>
+  </ul>
+
+  <div class="subscribe">
+    <form id="subscribe-form">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <div class="subscribe-message" id="subscribe-message">Thanks! You’ll be notified when we launch.</div>
+  </div>
+<!-- Add this after your subscription section and before socials/footer -->
+<div class="why-join">
+  <h2 style="color:#ff3b3b; margin-bottom:30px;">Why join us?</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">📁</div>
+      <h3>Exclusive Content</h3>
+      <p>Access raw, unfiltered content that you won't find anywhere else.</p>
+      <span class="number">1</span>
+    </div>
+    <div class="card">
+      <div class="icon">❤️</div>
+      <h3>Support the Cause</h3>
+      <p>Every view supports our ongoing efforts to expose predators.</p>
+      <span class="number">2</span>
+    </div>
+    <div class="card">
+      <div class="icon">📣</div>
+      <h3>Stay Updated</h3>
+      <p>Be the first to know about new operations and updates.</p>
+      <span class="number">3</span>
+    </div>
+  </div>
+</div>
+
+<style>
+.why-join { margin:60px 0; }
+.cards { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+.card {
+  background:#1a1a1a; border-radius:12px; padding:25px; width:250px; position:relative;
+  transition: transform 0.3s, box-shadow 0.3s; text-align:left;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 0 15px #ff3b3b; }
+.card .icon { font-size:2rem; margin-bottom:15px; }
+.card h3 { color:#fff; margin-bottom:10px; }
+.card p { color:#ccc; font-size:0.95rem; }
+.card .number {
+  position:absolute; top:15px; right:15px; font-size:3rem; color:#333; font-weight:bold;
+  pointer-events:none;
+  user-select:none;
+}
+@media(max-width:800px){ .cards{flex-direction:column;align-items:center;} }
+</style>
+
+  <div class="socials">
+    <a href="#">YouTube</a> |
+    <a href="#">Discord</a>
+  </div>
+
+  <footer>⚠️ All content is for educational, awareness, and legal reporting purposes only. We do not condone vigilantism or illegal activity.</footer>
+</div>
+
+<script>
+// Email Subscription
+document.getElementById("subscribe-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  document.getElementById("subscribe-message").style.display="block";
+  this.reset();
+});
+
+// Background Particles
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<150;i++){
+  particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.7, dy:(Math.random()-0.5)*0.7});
+}
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle="#ff3b3b";
+    ctx.fill();
+    p.x+=p.dx; p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+window.addEventListener("resize",()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+</script>
+</body>
+</html>
+<!-- Coming Soon Overlay -->
+<style>
+.coming-soon-overlay {
+    position:fixed;
+    top:0; left:0; width:100vw; height:100vh;
+    background:rgba(17,17,17,0.97);
+    z-index:9999;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    pointer-events:none;
+    animation: overlayFadeIn 2s ease;
+}
+@keyframes overlayFadeIn { from{opacity:0;} to{opacity:1;} }
+.coming-soon-overlay h1 {
+    font-size:3.5rem;
+    color:#ff3b3b;
+    margin-bottom:20px;
+    text-shadow:0 0 20px #ff3b3b;
+}
+.coming-soon-overlay p {
+    font-size:1.3rem;
+    color:#fff;
+    margin-bottom:30px;
+    max-width:500px;
+}
+.coming-soon-overlay .soon-date {
+    font-size:1.1rem;
+    color:#ff3b3b;
+    background:#222;
+    padding:10px 25px;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+@media(max-width:600px){
+    .coming-soon-overlay h1{font-size:2.2rem;}
+    .coming-soon-overlay p{font-size:1rem;}
+}
+</style>
+<div class="coming-soon-overlay" id="coming-soon-overlay">
+    <h1>Coming Soon</h1>
+    <p>We're working hard to launch EDPNZ.<br>
+        Follow the Youtube to be notified and get early access when we go live!</p>
+    <div class="soon-date">Launching Soon</div>
+</div>
+<script>
